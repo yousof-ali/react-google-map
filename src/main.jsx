@@ -11,24 +11,25 @@ import Error from './Components/Error/Error';
 import Home from './Components/Home/Home';
 import Product from './Components/Product/Product';
 import Blog from './Components/Blog/Blog';
+import { HelmetProvider } from 'react-helmet-async';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
-    errorElement:<Error></Error>,
-    children:[
+    errorElement: <Error></Error>,
+    children: [
       {
-        path:"/",
-        element:<Home></Home>
+        path: "/",
+        element: <Home></Home>
       },
       {
-        path:"/product",
-        element:<Product></Product>
+        path: "/product",
+        element: <Product></Product>
       },
       {
-        path:"/blog",
-        element:<Blog></Blog>
+        path: "/blog",
+        element: <Blog></Blog>
       }
     ]
   },
@@ -36,6 +37,9 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-     <RouterProvider router={router} />
+    <HelmetProvider>
+      <RouterProvider router={router} />
+    </HelmetProvider>
+
   </React.StrictMode>,
 )
